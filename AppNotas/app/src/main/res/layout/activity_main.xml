@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/textoprueba"
         android:layout_width="wrap_content"
@@ -14,5 +15,15 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/boton_prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:text="Click"
+        android:layout_gravity="center"
+        />
+
 
 </LinearLayout>
