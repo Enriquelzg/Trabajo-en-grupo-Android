@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppNotas">
         <activity
+            android:name=".EditarNotas"
+            android:exported="true" />
+        <activity
             android:name=".Notas"
             android:exported="true" />
         <activity
