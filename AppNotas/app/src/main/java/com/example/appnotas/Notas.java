@@ -16,13 +16,13 @@ public class Notas extends AppCompatActivity {
 
     private ImageButton guardar;
     private EditText editable;
-    private static List<EditText> listaNotas = new ArrayList<EditText>();
+    private static List<String> listaNotas = new ArrayList<String>();
 
-    public static List<EditText> getListaNotas() {
+    public static List<String> getListaNotas() {
         return listaNotas;
     }
 
-    public void setListaNotas(List<EditText> listaNotas) {
+    public void setListaNotas(List<String> listaNotas) {
         this.listaNotas = listaNotas;
     }
 
@@ -39,7 +39,8 @@ public class Notas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Notas.this, MainActivity.class));
-                listaNotas.add(editable);
+                String str = editable.getText().toString();
+                listaNotas.add(str);
             }
         });
 

@@ -16,8 +16,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton nuevaNota;
-    private List<EditText> listaNotas;
-    public EditText nota;
+    private List<String> listaNotas = null;
+    public String nota;
+    private EditText texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +26,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         nuevaNota = findViewById(R.id.nueva);
-        nota = findViewById(R.id.nota);
+        texto = findViewById(R.id.nota);
         listaNotas = Notas.getListaNotas();
 
-        nota=listaNotas.get(0);
+        try {
+            nota=listaNotas.get(0);
+            texto.setText(nota);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override
