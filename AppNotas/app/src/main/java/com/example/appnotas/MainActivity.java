@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -15,17 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton nuevaNota;
-    private List<String> listaNotas = new ArrayList<String>();
-
-    public List<String> getListaNotas() {
-        return listaNotas;
-    }
-
-    public void setListaNotas(List<String> listaNotas) {
-        this.listaNotas = listaNotas;
-    }
-
-    public String nota;
+    private List<EditText> listaNotas;
+    public EditText nota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         nuevaNota = findViewById(R.id.nueva);
+        nota = findViewById(R.id.nota);
+        listaNotas = Notas.getListaNotas();
 
+        nota=listaNotas.get(0);
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override

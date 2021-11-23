@@ -5,28 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Notas extends AppCompatActivity {
 
     private ImageButton guardar;
+    private EditText editable;
+    private static List<EditText> listaNotas = new ArrayList<EditText>();
+
+    public static List<EditText> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(List<EditText> listaNotas) {
+        this.listaNotas = listaNotas;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
-        guardar = findViewById(R.id.guardar);
 
-        List<Integer> listaNotas = num.getList();
+        guardar = findViewById(R.id.guardar);
+        editable = findViewById(R.id.editable);
+
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Notas.this, MainActivity.class));
-
+                listaNotas.add(editable);
             }
         });
 
