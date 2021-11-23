@@ -18,7 +18,7 @@
         />
 
     <ImageButton
-        android:id="@+id/boton_mas"
+        android:id="@+id/nueva"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentRight="true"
