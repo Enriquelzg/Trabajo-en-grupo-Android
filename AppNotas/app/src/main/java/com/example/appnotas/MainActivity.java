@@ -16,7 +16,16 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton nuevaNota;
     private List<String> listaNotas = new ArrayList<String>();
-    private String nota;
+
+    public List<String> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(List<String> listaNotas) {
+        this.listaNotas = listaNotas;
+    }
+
+    public String nota;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
