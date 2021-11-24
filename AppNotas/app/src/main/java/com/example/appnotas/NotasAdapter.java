@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> {
-    ArrayList<Object> notas;
+    private ArrayList<Object> notas;
+    private TinyDB tinyDB;
 
     public NotasAdapter(ArrayList<Object>notas){
         this.notas = notas;
@@ -21,19 +22,21 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     public NotasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.formanotas, parent, false);
+        tinyDB = new TinyDB(parent.getContext());
 
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotasAdapter.ViewHolder holder, int position) { ;
-        holder.tituloText.setText(ConstructorNotas.getTitulo());
-        holder.notaText.setText(ConstructorNotas.getNota());
+    public void onBindViewHolder(@NonNull NotasAdapter.ViewHolder holder, int position) {
+        ConstructorNotas nota = (ConstructorNotas) notas.get(position);
+        holder.tituloText.setText(nota.getTitulo());
+        holder.notaText.setText(nota.getNota());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return notas.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

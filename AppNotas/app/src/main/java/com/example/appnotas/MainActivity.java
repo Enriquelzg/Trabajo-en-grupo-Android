@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton nuevaNota;
     private List<Object> listaNotas = null;
     public String nota;
+    private TinyDB tinyDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
