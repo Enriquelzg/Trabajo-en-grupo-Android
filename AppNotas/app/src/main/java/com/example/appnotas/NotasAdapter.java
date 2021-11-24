@@ -22,7 +22,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

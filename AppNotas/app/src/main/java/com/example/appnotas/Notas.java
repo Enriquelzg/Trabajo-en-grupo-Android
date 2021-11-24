@@ -15,7 +15,7 @@ import java.util.List;
 public class Notas extends AppCompatActivity {
 
     private ImageButton guardar;
-    private EditText editable,titulo;
+    private EditText editable,title;
     private static List<Object> listaNotas = new ArrayList<Object>();
 
     public static List<Object> getListaNotas() {
@@ -33,13 +33,14 @@ public class Notas extends AppCompatActivity {
 
         guardar = findViewById(R.id.guardar);
         editable = findViewById(R.id.editable);
+        title = findViewById(R.id.titulo);
 
 
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Notas.this, MainActivity.class));
-                String titulo = editable.getText().toString();
+                String titulo = title.getText().toString();
                 String nota = editable.getText().toString();
                 ConstructorNotas nota1 = new ConstructorNotas(titulo,nota);
                 listaNotas.add(nota1);

@@ -7,6 +7,16 @@
     tools:context=".Notas">
 
     <EditText
+        android:id="@+id/titulo"
+        android:hint="Título"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
         android:id="@+id/editable"
         android:hint="Escribe aquí"
         android:layout_width="wrap_content"
