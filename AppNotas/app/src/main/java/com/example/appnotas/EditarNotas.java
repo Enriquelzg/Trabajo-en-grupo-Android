@@ -13,7 +13,7 @@ public class EditarNotas extends AppCompatActivity {
 
     private ImageButton guardar;
     private EditText editable;
-    private List<String> listaNotas = null;
+    private List<Object> listaNotas = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

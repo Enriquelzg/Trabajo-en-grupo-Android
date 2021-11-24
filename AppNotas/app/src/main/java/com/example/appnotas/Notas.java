@@ -15,14 +15,14 @@ import java.util.List;
 public class Notas extends AppCompatActivity {
 
     private ImageButton guardar;
-    private EditText editable;
-    private static List<String> listaNotas = new ArrayList<String>();
+    private EditText editable,titulo;
+    private static List<Object> listaNotas = new ArrayList<Object>();
 
-    public static List<String> getListaNotas() {
+    public static List<Object> getListaNotas() {
         return listaNotas;
     }
 
-    public void setListaNotas(List<String> listaNotas) {
+    public void setListaNotas(List<Object> listaNotas) {
         this.listaNotas = listaNotas;
     }
 
@@ -39,8 +39,10 @@ public class Notas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Notas.this, MainActivity.class));
-                String str = editable.getText().toString();
-                listaNotas.add(str);
+                String titulo = editable.getText().toString();
+                String nota = editable.getText().toString();
+                ConstructorNotas nota1 = new ConstructorNotas(titulo,nota);
+                listaNotas.add(nota1);
             }
         });
 
