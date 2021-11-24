@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> {
+    ArrayList<Object> notas;
+
+    public NotasAdapter(ArrayList<Object>notas){
+        this.notas = notas;
+    }
     @NonNull
     @Override
     public NotasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -21,8 +26,9 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotasAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NotasAdapter.ViewHolder holder, int position) { ;
         holder.tituloText.setText(ConstructorNotas.getTitulo());
+        holder.notaText.setText(ConstructorNotas.getNota());
     }
 
     @Override
@@ -31,14 +37,12 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tituloText;
+        private TextView tituloText,notaText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tituloText = itemView.findViewById(R.id.textView);
+            notaText = itemView.findViewById(R.id.notaView);
         }
     }
-    ArrayList<Object>notas;
-    public NotasAdapter(ArrayList<Object>notas){
-        this.notas = notas;
-    }
+
 }
