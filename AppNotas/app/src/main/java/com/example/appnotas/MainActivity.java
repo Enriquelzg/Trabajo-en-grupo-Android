@@ -13,27 +13,30 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton nuevaNota;
-    private List<Object> listaNotas = null;
+    private ArrayList<Object> listaNotas = null;
     public String nota;
     private TinyDB tinyDB;
     private RecyclerView recycler;
+    private NotasAdapter notasAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tinyDB = new TinyDB(this);
+        listaNotas = tinyDB.getListObject("nota",Object.class);
         nuevaNota = findViewById(R.id.nueva);
-        listaNotas = Notas.getListaNotas();
+        notasAdapter = new NotasAdapter(listaNotas);
         recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
         recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        recycler.setAdapter(NotasAdapter);
+        recycler.setAdapter(notasAdapter);
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Notas.class));
             }
         });
-
     }
+
 }

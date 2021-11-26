@@ -43,9 +43,10 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
         private TextView tituloText,notaText;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tituloText = itemView.findViewById(R.id.textView);
-            notaText = itemView.findViewById(R.id.notaView);
+            tituloText = itemView.findViewById(R.id.titulo);
+            notaText = itemView.findViewById(R.id.contenidoNota);
         }
     }
+
 
 }

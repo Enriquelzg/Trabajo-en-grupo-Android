@@ -16,6 +16,7 @@ public class Notas extends AppCompatActivity {
 
     private ImageButton guardar;
     private EditText editable,title;
+    private TinyDB tinyDB;
     private static List<Object> listaNotas = new ArrayList<Object>();
 
     public static List<Object> getListaNotas() {
@@ -34,6 +35,7 @@ public class Notas extends AppCompatActivity {
         guardar = findViewById(R.id.guardar);
         editable = findViewById(R.id.editable);
         title = findViewById(R.id.titulo);
+        tinyDB = new TinyDB(this);
 
 
         guardar.setOnClickListener(new View.OnClickListener() {
