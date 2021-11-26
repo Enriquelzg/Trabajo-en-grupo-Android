@@ -3,11 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/enriq/Desktop/Androidgrupo/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_editar_notas.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/enriq/Desktop/Androidgrupo/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/enriq/Desktop/Androidgrupo/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_notas.xml" value="0.22" />
-        <entry key="..\:/Users/enriq/Desktop/Androidgrupo/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/formanotas.xml" value="0.2871376811594203" />
+        <entry key="..\:/Users/enriq/Desktop/Androidgrupo/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_main.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/franc/OneDrive/Escritorio/Trabajo_grupo_android/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/franc/OneDrive/Escritorio/Trabajo_grupo_android/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/activity_notas.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/franc/OneDrive/Escritorio/Trabajo_grupo_android/Trabajo-en-grupo-Android/AppNotas/app/src/main/res/layout/formanotas.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
