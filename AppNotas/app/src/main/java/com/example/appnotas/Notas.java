@@ -17,13 +17,13 @@ public class Notas extends AppCompatActivity {
     private ImageButton guardar;
     private EditText editable,title;
     private TinyDB tinyDB;
-    private static List<Object> listaNotas = new ArrayList<Object>();
+    private static ArrayList<Object> listaNotas = new ArrayList<Object>();
 
-    public static List<Object> getListaNotas() {
+    public static ArrayList<Object> getListaNotas() {
         return listaNotas;
     }
 
-    public void setListaNotas(List<Object> listaNotas) {
+    public void setListaNotas(ArrayList<Object> listaNotas) {
         this.listaNotas = listaNotas;
     }
 
@@ -41,11 +41,12 @@ public class Notas extends AppCompatActivity {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Notas.this, MainActivity.class));
                 String titulo = title.getText().toString();
                 String nota = editable.getText().toString();
                 ConstructorNotas nota1 = new ConstructorNotas(titulo,nota);
                 listaNotas.add(nota1);
+                tinyDB.putListObject("notasdata",listaNotas);
+                startActivity(new Intent(Notas.this, MainActivity.class));
             }
         });
 

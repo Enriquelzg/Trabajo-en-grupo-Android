@@ -1,6 +1,8 @@
 package com.example.appnotas;
 
-public class ConstructorNotas {
+import java.io.Serializable;
+
+public class ConstructorNotas implements Serializable {
     private String titulo;
     private String nota;
 

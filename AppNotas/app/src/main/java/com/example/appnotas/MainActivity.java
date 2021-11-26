@@ -31,12 +31,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tinyDB = new TinyDB(this);
-        listaNotas = tinyDB.getListObject("nota",Object.class);
-        nuevaNota = findViewById(R.id.nueva);
-        notasAdapter = new NotasAdapter(listaNotas);
-        recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
-        recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        recycler.setAdapter(notasAdapter);
+        try {
+            listaNotas = tinyDB.getListObject("notasdata", Object.class);
+            nuevaNota = findViewById(R.id.nueva);
+            notasAdapter = new NotasAdapter(listaNotas);
+            recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
+            recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+            recycler.setAdapter(notasAdapter);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override
