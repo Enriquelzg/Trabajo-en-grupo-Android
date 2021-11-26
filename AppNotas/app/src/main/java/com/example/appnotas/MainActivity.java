@@ -1,6 +1,8 @@
 package com.example.appnotas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,16 +22,18 @@ public class MainActivity extends AppCompatActivity {
     private List<Object> listaNotas = null;
     public String nota;
     private TinyDB tinyDB;
+    private RecyclerView recycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tinyDB = new TinyDB(this);
         nuevaNota = findViewById(R.id.nueva);
         listaNotas = Notas.getListaNotas();
-
-
+        recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
+        recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recycler.setAdapter(NotasAdapter);
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override
