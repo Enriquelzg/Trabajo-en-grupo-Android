@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/light_blue_1">
+
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/element_text"/>
+        android:text="Lista de la compra"
+        android:textSize="30sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50sp"
+        android:layout_marginLeft="50sp"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/black"
+        />
+
     <TextView
-        android:id="@+id/notaView"
+        android:id="@+id/contenidoNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/element_text"/>
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="40dp"
+        android:text="Hay que ir a comprar al mercadona una caja de manzanas, una de peras y unos cereales de fresa"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/grey_1"
+
+        />
 </FrameLayout>
