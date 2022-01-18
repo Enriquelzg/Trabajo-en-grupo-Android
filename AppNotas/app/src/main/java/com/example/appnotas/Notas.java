@@ -45,7 +45,7 @@ public class Notas extends AppCompatActivity {
                 String nota = editable.getText().toString();
                 ConstructorNotas nota1 = new ConstructorNotas(titulo,nota);
                 listaNotas.add(nota1);
-                tinyDB.putListObject("notasdata",listaNotas);
+                tinyDB.putListObject("notasdata3",listaNotas);
                 startActivity(new Intent(Notas.this, MainActivity.class));
             }
         });
