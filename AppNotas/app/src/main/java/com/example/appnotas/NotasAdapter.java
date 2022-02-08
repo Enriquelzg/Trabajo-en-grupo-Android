@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> {
     private ArrayList<Object> notas;
-    private TinyDB tinyDB;
+    //private TinyDB tinyDB;
 
     public NotasAdapter(ArrayList<Object>notas){
         this.notas = notas;
@@ -22,7 +22,7 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.ViewHolder> 
     public NotasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.formanotas, parent, false);
-        tinyDB = new TinyDB(parent.getContext());
+        //tinyDB = new TinyDB(parent.getContext());
 
         return new ViewHolder(v);
     }
