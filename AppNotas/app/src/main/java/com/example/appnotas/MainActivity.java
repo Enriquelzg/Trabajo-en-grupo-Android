@@ -27,8 +27,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton nuevaNota;
-    private ArrayList<Object> listaNotas = null;
+    private ImageButton nuevaNota, actualizar;
+    private static ArrayList<Object> listaNotas = new ArrayList<>();
     public String nota;
    // private TinyDB tinyDB;
     private RecyclerView recycler;
@@ -38,48 +38,42 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDataRef = myDB.getReference();
     private LeerEscribir database;
 
+    /*public static void setListaNotas(ArrayList<Object> listNotas) {
+        listaNotas = listNotas;
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //tinyDB = new TinyDB(this);
-        listaNotas = new ArrayList<>();
         database = new LeerEscribir(mDataRef);
-
-        myDB.getReference();
-        mDataRef.child("Notas").child("0").addValueEventListener(new ValueEventListener(){
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String nota1 = snapshot.child("titulo").getValue().toString();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-        try {
-            listaNotas = database.getlista3(mDataRef);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
         nuevaNota = findViewById(R.id.nueva);
-        notasAdapter = new NotasAdapter(listaNotas);
-        recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
-        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recycler.setAdapter(notasAdapter);
+        actualizar = findViewById(R.id.recargar);
 
         nuevaNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Notas.class));
+                Notas.setListaNotas(listaNotas);
+            }
+        });
+
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    listaNotas = database.getlista3(mDataRef, listaNotas);
+                }catch (NullPointerException e){
+
+                }
+
+                nuevaNota = findViewById(R.id.nueva);
+                notasAdapter = new NotasAdapter(listaNotas);
+                recycler = (RecyclerView) findViewById(R.id.reciclarnotas);
+                recycler.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false));
+                recycler.setAdapter(notasAdapter);
             }
         });
     }

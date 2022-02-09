@@ -6,9 +6,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.EventListener;
@@ -34,8 +37,7 @@ public class LeerEscribir {
     }
 
     // [START rtdb_write_new_user]
-    public void write(String titulo, String texto, ArrayList<Object> listaNotas) {
-        ConstructorNotas nota = new ConstructorNotas(titulo, texto);
+    public void write(ArrayList<Object> listaNotas) {
         mDatabase.child("Notas").child("Notas").setValue(listaNotas);
     }
 
@@ -87,22 +89,40 @@ public class LeerEscribir {
         return lista;
     }*/
 
-    public ArrayList<Object> getlista3(DatabaseReference mPostReference){
-        ArrayList<Object> list = new ArrayList<>();
-        mDatabase.child("Notas").child("0").addValueEventListener(new ValueEventListener(){
+    public ArrayList<Object> getlista3(DatabaseReference mPostReference,ArrayList<Object> list){
+        ValueEventListener postListener = new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String nota1 = snapshot.child("titulo").getValue().toString();
+                if(snapshot.exists()) {
+                    String titulo = " ";
+                    int num = list.size();
+                    try {
+                        while (titulo != null) {
+                            titulo = snapshot.child("Notas").child("Notas").child(Integer.toString(num)).child("titulo").getValue().toString();
+                            String texto = snapshot.child("Notas").child("Notas").child(Integer.toString(num)).child("nota").getValue().toString();
+                            if (titulo != null) {
+                                ConstructorNotas nota = new ConstructorNotas(titulo, texto);
+                                list.add(nota);
+                            }
+                            ++num;
+                        }
+                    }catch (NullPointerException e){
+
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.w(TAG, "loadPost:onCancelled", error.toException());
             }
-        });
+        };
+        mPostReference.addValueEventListener(postListener);
+        //ConstructorNotas nota = new ConstructorNotas("hey","mundo");
+        //list.add(nota);
         return list;
     }
+
 }
+

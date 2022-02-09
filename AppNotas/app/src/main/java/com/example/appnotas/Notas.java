@@ -31,8 +31,8 @@ public class Notas extends AppCompatActivity {
         return listaNotas;
     }
 
-    public void setListaNotas(ArrayList<Object> listaNotas) {
-        this.listaNotas = listaNotas;
+    public static void setListaNotas(ArrayList<Object> listNotas) {
+        listaNotas = listNotas;
     }
 
     @Override
@@ -58,7 +58,8 @@ public class Notas extends AppCompatActivity {
                 ConstructorNotas nota1 = new ConstructorNotas(titulo,nota);
                 listaNotas.add(nota1);
                 //tinyDB.putListObject("notasdata3",listaNotas);
-                database.write(titulo,nota,listaNotas);
+                database.write(listaNotas);
+                //MainActivity.setListaNotas(listaNotas);
                 startActivity(new Intent(Notas.this, MainActivity.class));
             }
         });
